@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id='openBtn'>打开图片</button>
+    <img id='images' style="width: 100%;"/>
+</body>
+<script>
+    const {dialog} = require('electron').remote
+    var openBtn = document.getElementById('openBtn')
+    openBtn.onclick = function(){
+        // dialog.showOpenDialogSync    // 同步
+        dialog.showOpenDialog({
+            title:'请选择照片',
+            defaultPath:'test.html', // 默认打开的文件
+            filters:[{name:'图片', extensions:['jpg']}], // 过滤文件格式
+            buttonLabel:'自定义打开',
+        }).then(result=>{
+            console.log(result)
+            if (result.canceled == false) {
+                let image = document.getElementById('images')
+                image.setAttribute('src', result.filePaths[0])
+            }           
+        }).catch(err=>{
+            // 异常捕获
+            console.log(err)
+        })
+    }
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        激活码:<span id='code'>timo48181dfgd8g818185163g</span>
+        <button id='btn'>复制激活码</button>
+    </div>
+</body>
+<script>
+    // 这个在渲染和主进程都能使用
+    const{clipboard} = require('electron')
+    const code = document.getElementById('code')
+    const btn = document.getElementById('btn')
+    btn.onclick = ()=>{
+        clipboard.writeText(code.innerHTML)
+        alert('复制成功')
+    }
+</script>
+</html>
