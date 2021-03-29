@@ -8,11 +8,16 @@
 > 测试环境 Windows 10 64位
 
 > 暂时启动用于需要先进入app目录下再开启应用
+>
+> 需要安装python2.7 
 
 ```shell
 $ cd app
-$ npm start
+$ cnpm install --global --production windows-build-tools
+$ cnpm install
+$ cnpm start
 ```
 
 ## 效果
 ![](https://i.imgur.com/2QXn7kk.png)
+
