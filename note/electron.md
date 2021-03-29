@@ -6,7 +6,7 @@
 
 使用 JavaScript，HTML 和 CSS 构建跨平台的桌面应用程序
 
-允许前端开发着使用html js css开发桌面应用
+允许前端开发者使用html js css开发桌面应用
 
 electron = chrominum + node.js + native api
 
@@ -24,7 +24,7 @@ native api:跨平台和桌面原生的能力
 
    通过`npm -v node -v`查看版本呢
 
-2. 入到工程目录 输入命令 `npm init -y` ，生成package.json文件
+2. 进入到工程目录 输入命令 `npm init -y` ，生成package.json文件
 
 3. 局部开发环境安装electron ，命令`npm install electron --save-dev`
 
@@ -94,7 +94,15 @@ app.on('ready', ()=>{
 
 
 
-## electron 编写小程序2
+效果:
+
+![](./01_helloworld.png)
+
+
+
+
+
+## electron 编写小程序2 读取文件
 
 程序 02_xiaojiejie
 
@@ -138,6 +146,30 @@ app.on('ready', ()=>{
     })
 })
 ```
+
+
+
+index.js:
+
+```javascript
+// node 的方法
+var fs = require('fs');
+window.onload = function(){
+    var btn = this.document.querySelector('#btn');
+    var mybaby = this.document.querySelector('#mybaby');
+    btn.onclick = function(){
+        fs.readFile('xiaojiejie.txt', (err, data)=>{
+            mybaby.innerHTML = data;
+        })
+    }
+}
+```
+
+
+
+效果:
+
+![](./02_file.png)
 
 
 
@@ -212,6 +244,12 @@ window.onload = function() {
     }
 }
 ```
+
+
+
+效果:
+
+![](./03_remote.png)
 
 
 
@@ -300,6 +338,12 @@ app.on('ready', ()=>{
     })
 })
 ```
+
+
+
+效果:
+
+![](./04_menu.png)
 
 
 
@@ -411,6 +455,14 @@ ipc.on('debug-message', function (event, arg) {
 
 
 
+效果:
+
+![](./05_youjian.png)
+
+
+
+
+
 ## electron通过链接打开浏览器
 
 参考 06_lianjie
@@ -438,6 +490,12 @@ aHref.onclick = function(e){
     shell.openExternal(href)
 }
 ```
+
+
+
+效果:
+
+![](./06_lianjie.png)
 
 
 
@@ -540,6 +598,12 @@ mybtn.onclick = function(e){
 
 
 
+效果:
+
+![](./07_subwindow.png)
+
+
+
 ## electron 子窗口向父窗口传递信息
 
 参考 08_message
@@ -573,6 +637,14 @@ popup_page.html
 </script>
 </html>
 ```
+
+
+
+效果:
+
+![](./08_message.png)
+
+
 
 
 
@@ -621,6 +693,16 @@ demo4.html
 </script>
 </html>
 ```
+
+
+
+效果:
+
+![](./08_message.png)
+
+![](./09_openfile_2.png)
+
+
 
 
 
@@ -689,6 +771,12 @@ demo4.html
 
 
 
+效果:
+
+![](./10_savefile.png)
+
+
+
 ## electron 消息对话框操作
 
 参考 11_messagebox
@@ -711,6 +799,14 @@ demo4.html
 
 
 
+效果:
+
+![](./12_message_box.png)
+
+
+
+
+
 ## electron 断网提醒功能制作
 
 
@@ -730,6 +826,12 @@ demo4.html
 
 
 
+效果:
+
+![](./13_wlan.png)
+
+
+
 ## electron 底部通知消息制作
 
 参考 13_bottommes
@@ -746,6 +848,12 @@ demo4.html
         new window.Notification(option.title, option)
     }
 ```
+
+
+
+效果：
+
+![](./14_tongzhi.png)
 
 
 
@@ -781,3 +889,13 @@ app.on('will-quit', function(){
 ## electron 剪切板功能的使用
 
 参考 15_shear
+
+
+
+## electron 串口功能
+
+参考 16_serial
+
+效果:
+
+![](./16_serialport.png)
